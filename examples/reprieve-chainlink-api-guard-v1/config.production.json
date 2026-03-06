@@ -1,0 +1,127 @@
+{
+  "strategyId": "CHAINLINK_API_GUARD_V1",
+  "workflowVersion": "0.4.0-slide4",
+  "chainSelectorName": "ethereum-testnet-sepolia",
+  "isTestnet": true,
+  "contracts": {
+    "rescueExecutor": "0x99B6e30b737F1D451B44F8369d3EC1809ab25262",
+    "rescueReporter": "0x860Cde8737998D6166340d485ad68f49B5d6C3e9",
+    "workflowReceiver": "0x860Cde8737998D6166340d485ad68f49B5d6C3e9",
+    "ccipReceiver": "0xD88Ca3501A08Fa70ef95415512b68C013aAdfd99"
+  },
+  "trigger": {
+    "http": {
+      "enabled": true,
+      "authorizedKeys": [
+        "0x04aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    "evmLog": {
+      "enabled": true,
+      "chainSelectorName": "ethereum-testnet-sepolia",
+      "isTestnet": true,
+      "addresses": [
+        "0x99B6e30b737F1D451B44F8369d3EC1809ab25262",
+        "0xD88Ca3501A08Fa70ef95415512b68C013aAdfd99"
+      ],
+      "topics": [
+        "0xd4128db1fda076924846d094ad59a41b49f7a4549d7458efe4cc4b646e71ff8f",
+        "0x33b6af444fe9519ea73c16ffe62acbdc79315a8279b135dea1c39fbf71e57600",
+        "0xa2009c4dd61cbd90c9ae3bd19525a33ddbc46f3dc6973936180c9f1f091b6dbe",
+        "0x4cdde96a772bd91aba8e6b851177e3723470d4e954a493eb5d018aa56320c30c",
+        "0x9a38f04f175068f7831600f534c9e0a415195bdd7ed9af8a9db2618ee37ee11d",
+        "0xa1a9797d1cf848fa8a8558bc9e2d8cefadf44a7c0155cc17c5aa72b965d58a30"
+      ],
+      "confidence": "CONFIDENCE_LEVEL_FINALIZED"
+    },
+    "cron": {
+      "enabled": true,
+      "schedule": "*/5 * * * *"
+    }
+  },
+  "thresholds": {
+    "onchainHfMinBps": 10000,
+    "earlyWarningHfBps": 11250,
+    "stalePricePenaltyBps": 150,
+    "slopePenaltyBps": 200
+  },
+  "budget": {
+    "maxNativeFeeWei": "50000000000000000",
+    "maxRescueNotionalUsd": 100000
+  },
+  "rescue": {
+    "defaultMode": "TOP_UP",
+    "allowCrossChain": true,
+    "reserveCapBps": 3000,
+    "minActionUsd": 10,
+    "targetHfBps": 14500
+  },
+  "crossChain": {
+    "sourceChainSelector": "16015286601757825753",
+    "destinationChainSelector": "10344971235874465080",
+    "deliveryTimeoutSec": 1800
+  },
+  "monitoring": {
+    "defaultUser": "0x7FbBC4ABd42f91a6e3861D33a67DeC13558658b5",
+    "adapters": [
+      {
+        "label": "source-aave-adapter",
+        "adapterAddress": "0x9a2389d74e6318C67824339e37450437b4De7027",
+        "chainSelectorName": "ethereum-testnet-sepolia",
+        "isTestnet": true,
+        "rescueTargetChainSelector": "10344971235874465080"
+      },
+      {
+        "label": "target-compound-adapter",
+        "adapterAddress": "0x571cf1d4fbeae893E02bA61Df5B0E9D5B7311dBa",
+        "chainSelectorName": "ethereum-testnet-sepolia",
+        "isTestnet": true
+      },
+      {
+        "label": "aux-morpho-adapter",
+        "adapterAddress": "0x2444d3079CB7e248BA35044250d4448f8Bb3Bc68",
+        "chainSelectorName": "ethereum-testnet-sepolia",
+        "isTestnet": true
+      },
+      {
+        "label": "base-aave-adapter",
+        "adapterAddress": "0x3Ce2A7601623bdB7aF942eD07BF185b5a8CF0cd9",
+        "chainSelectorName": "ethereum-testnet-sepolia-base-1",
+        "isTestnet": true
+      },
+      {
+        "label": "base-compound-adapter",
+        "adapterAddress": "0xA10dD58EcAdf3fd071a23415e55FD23287d684bc",
+        "chainSelectorName": "ethereum-testnet-sepolia-base-1",
+        "isTestnet": true
+      },
+      {
+        "label": "base-morpho-adapter",
+        "adapterAddress": "0x325fADdd2B7F0B3f7ab8E5113F31a4C208669f44",
+        "chainSelectorName": "ethereum-testnet-sepolia-base-1",
+        "isTestnet": true
+      }
+    ],
+    "abortOnMissingPrice": true,
+    "priceShockAbortBps": 2500
+  },
+  "dataSources": {
+    "chainlinkApi": {
+      "priceApiBaseUrl": "https://api.chainlink.example",
+      "priceApiPath": "/v1/price",
+      "maxPriceAgeSec": 120,
+      "stalePolicy": "ABORT",
+      "crossChainAssetMap": {
+        "0xedd391fda28993287df301485abf72865dee5050": "0x4c87EA388AdE37f6A556146B4fF6ff2A12192968",
+        "0x7570e1f97e0831e929b9525858586e274f5c9cf2": "0x7C31b54EB6712B308cf27aA7e8d2012DcfA92E4E"
+      },
+      "integritySalt": "reprieve-chainlink-api-guard-v1",
+      "preferOnchainOracle": true,
+      "mockOracleAddress": "0xf7FF29381Be343398e014cB00d48A1c4698BD224",
+      "mockPricesUsd": {
+        "0x4c87ea388ade37f6a556146b4ff6ff2a12192968": "2000",
+        "0x7c31b54eb6712b308cf27aa7e8d2012dcfa92e4e": "1"
+      }
+    }
+  }
+}

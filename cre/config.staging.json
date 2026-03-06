@@ -1,0 +1,31 @@
+{
+  "strategyId": "COMPLIANCE_VAULT_V1",
+  "workflowVersion": "0.2.0-ccid",
+  "chainSelectorName": "ethereum-testnet-sepolia",
+  "isTestnet": true,
+  "contracts": {
+    "vault": "0x2E614177DA50A4d29c3ca98E1c45e1D7ab8bf253",
+    "identityRegistry": "0x1FE30a35fEA66c75f4c259862a2968460cbE35F6",
+    "kycRegistry": "0x3f8208211647D17a99Ec6458c15f00b6458263B8",
+    "amlRegistry": "0xFE701E9a8DB3Cd331d3cdF8A6bD37a40c9C2FBD8",
+    "sanctionRegistry": "0x173dea57E159EB1B4ED0bC38dfA050E452f5C64d",
+    "worldidRegistry": "0x06c1d3D73C58044FaC4A62e3429C31A80818c1CB"
+  },
+  "trigger": {
+    "evmLog": {
+      "enabled": true,
+      "chainSelectorName": "ethereum-testnet-sepolia",
+      "isTestnet": true,
+      "addresses": ["0x2E614177DA50A4d29c3ca98E1c45e1D7ab8bf253"],
+      "topics": ["0xd9e78ca729f86a83ae83b68686ef38c17953e9eb97423aae550af7e6282583fb"],
+      "confidence": "CONFIDENCE_LEVEL_FINALIZED"
+    }
+  },
+  "execution": {
+    "runMode": "execute"
+  },
+  "backend": {
+    "enabled": true,
+    "url": "https://api-finance-os-dev.nysm.work/api/payments/audit-result"
+  }
+}

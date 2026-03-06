@@ -1,0 +1,14 @@
+{
+  "appApiBaseUrl": "https://api-tap-fun-chainlink.nysm.work/api/v1",
+  "owner": "0x28b94B571f8F3FEB444075B65054FFba4e10D49a",
+  "evms": [
+    {
+      "chainSelectorName": "ethereum-testnet-sepolia",
+      "chainId": 11155111,
+      "poolReserveAddress": "0x0b7400e10fd916A7B9eEe8981532aF9f38255bAf",
+      "assetAddress": "0x779877A7B0D9E8603169DdbD7836e478b4624789",
+      "gasLimit": "500000"
+    }
+  ],
+  "minSolvencyRatio": "1500000000000000000"
+}

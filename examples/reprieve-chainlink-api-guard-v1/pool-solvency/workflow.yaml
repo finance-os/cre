@@ -1,0 +1,35 @@
+# ==========================================================================
+# Pool Solvency PoR Workflow Settings
+# ==========================================================================
+
+local-simulation:
+  user-workflow:
+    workflow-name: "tapfun-pool-solvency"
+  workflow-artifacts:
+    workflow-path: "./main.ts"
+    config-path: "./config.json"
+    secrets-path: "../secrets.yaml"
+
+staging:
+  user-workflow:
+    workflow-name: "tapfun-pool-solvency"
+  workflow-artifacts:
+    workflow-path: "./main.ts"
+    config-path: "./config.json"
+    secrets-path: "../secrets.yaml"
+
+production:
+  user-workflow:
+    workflow-name: "tapfun-pool-solvency"
+  workflow-artifacts:
+    workflow-path: "./main.ts"
+    config-path: "./config.json"
+    secrets-path: "../secrets.yaml"
+
+sepolia-real:
+  user-workflow:
+    workflow-name: "tapfun-pool-solvency"
+  workflow-artifacts:
+    workflow-path: "./main.ts"
+    config-path: "./config.json"
+    secrets-path: "../secrets.yaml"

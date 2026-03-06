@@ -1,0 +1,7 @@
+cre workflow simulate . \
+  --target=staging-settings \
+  --non-interactive \
+  --trigger-index 0 \
+  --broadcast \
+  --evm-tx-hash 0x87c5b9d04be864252d369710f73fb94217e5991eaa06fab21840ed30d2ac3d12 \
+  --evm-event-index 0
